@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Service Hub — Websites die verkaufen. Automatisiert.</title>
+<meta name="description" content="Hochkonvertierende Websites für Coaches, Handwerker und KMU. Festpreis. In 7-10 Tagen online. Inklusive Design, SEO, Domain & Hosting.">
+<style>
+:root {
+  --primary: #6366f1;
+  --primary-light: #818cf8;
+  --primary-dark: #4f46e5;
+  --accent: #06b6d4;
+  --gold: #d4af37;
+  --bg: #030308;
+  --bg-card: #0a0a14;
+  --bg-elevated: #13131f;
+  --bg-glass: rgba(10,10,20,0.7);
+  --text: #e8ecf1;
+  --text-dim: #8a95a5;
+  --success: #22c55e;
+  --warning: #f59e0b;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+.container{width:92%;max-width:1200px;margin:0 auto;padding:0 1rem}
+
+/* Premium Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(ellipse 100% 100% at 20% 0%, rgba(99,102,241,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 100% at 80% 100%, rgba(6,182,212,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(99,102,241,0.03) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Animated grain texture */
+body::after {
+  content: '';
+  position: fixed;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.015;
+  animation: grain 8s steps(10) infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -5%); }
+  20% { transform: translate(-10%, 5%); }
+  30% { transform: translate(5%, -10%); }
+  40% { transform: translate(-5%, 15%); }
+  50% { transform: translate(-10%, 5%); }
+  60% { transform: translate(15%, 0); }
+  70% { transform: translate(0, 10%); }
+  80% { transform: translate(-15%, 0); }
+  90% { transform: translate(10%, 5%); }
+}
+
+/* Header */
+.header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:var(--bg-glass);backdrop-filter:blur(30px) saturate(1.2);border-bottom:1px solid rgba(255,255,255,.06);transition:all .3s}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:flex;align-items:center;gap:.7rem}
+.logo svg{width:36px;height:36px;filter:drop-shadow(0 0 8px rgba(99,102,241,0.4))}
+.nav{display:flex;align-items:center;gap:2rem}
+.nav a{color:var(--text-dim);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s;position:relative}
+.nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--primary),var(--accent));transition:width .3s;border-radius:2px}
+.nav a:hover{color:var(--text)}
+.nav a:hover::after{width:100%}
+.nav .cta-btn{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:.6rem 1.4rem;border-radius:50px;font-weight:600;font-size:.85rem;text-decoration:none;transition:all .3s;position:relative;overflow:hidden}
+.nav .cta-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:left .5s}
+.nav .cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(99,102,241,.4)}
+.nav .cta-btn:hover::before{left:100%}
+.mobile-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding-top:70px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(ellipse 80% 50% at 20% 40%,rgba(99,102,241,.15),transparent 60%),
+  radial-gradient(ellipse 60% 80% at 80% 60%,rgba(6,182,212,.12),transparent 50%),
+  radial-gradient(ellipse 50% 50% at 50% 100%,rgba(99,102,241,.08),transparent 50%),
+  radial-gradient(circle at 50% 50%,rgba(99,102,241,.05) 0%,transparent 70%);pointer-events:none;z-index:0}
+.hero-glow{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(99,102,241,0.2),rgba(6,182,212,0.1),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;animation:pulseGlow 6s ease-in-out infinite;z-index:0}
+@keyframes pulseGlow{0%,100%{opacity:0.4;transform:translate(-50%,-50%) scale(1)}50%{opacity:0.9;transform:translate(-50%,-50%) scale(1.15)}}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:850px;padding:2rem}
+.hero-logo{display:flex;justify-content:center;margin-bottom:2rem}
+.hero-logo svg{width:140px;height:140px;filter:drop-shadow(0 0 20px rgba(99,102,241,0.3));animation:logoRotate 20s linear infinite}
+.logo-anim{transform-origin:center;transition:transform 0.3s ease}
+.logo-anim:hover{transform:scale(1.1)}
+@keyframes logoRotate{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.25);color:var(--primary-light);padding:.5rem 1.2rem;border-radius:50px;font-size:.85rem;font-weight:600;margin-bottom:1.5rem;backdrop-filter:blur(10px)}
+.hero h1{font-size:clamp(2.4rem,5vw,4rem);font-weight:800;line-height:1.1;margin-bottom:1.2rem;letter-spacing:-.02em}
+.hero h1 .gradient{background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-subtitle{font-size:clamp(1.05rem,2vw,1.3rem);color:var(--text-dim);max-width:650px;margin:0 auto 2rem;line-height:1.7}
+.hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
+.btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:1.1rem 2.8rem;border-radius:50px;font-weight:700;font-size:1.05rem;text-decoration:none;transition:all .3s;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;position:relative;overflow:hidden}
+.btn-primary::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);transition:left .6s}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 15px 50px rgba(99,102,241,.5)}
+.btn-primary:hover::before{left:100%}
+.btn-secondary{background:var(--bg-glass);color:var(--text);padding:1.1rem 2.8rem;border-radius:50px;font-weight:600;font-size:1.05rem;text-decoration:none;transition:all .3s;border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(20px)}
+.btn-secondary:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.25);transform:translateY(-2px)}
+
+/* Trust Bar */
+.trust-bar{background:var(--bg-glass);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);padding:1.5rem 0;position:relative;z-index:2;backdrop-filter:blur(20px)}
+.trust-items{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;align-items:center}
+.trust-item{display:flex;align-items:center;gap:.6rem;color:var(--text-dim);font-size:.85rem;font-weight:500}
+.trust-item .icon{font-size:1.1rem}
+
+/* Demos Showcase */
+.demos{background:linear-gradient(180deg,transparent,rgba(99,102,241,.04))}
+.demos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
+.demo-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.08);border-radius:24px;overflow:hidden;transition:all .5s;text-decoration:none;color:var(--text);display:block}
+.demo-card:hover{border-color:rgba(99,102,241,.3);transform:translateY(-8px);box-shadow:0 30px 80px rgba(0,0,0,.4)}
+.demo-preview{position:relative;padding:1.5rem;background:var(--bg-elevated)}
+.demo-mockup{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.2)}
+.mockup-header{display:flex;gap:.4rem;padding:.5rem .8rem;background:#f1f1f1;border-bottom:1px solid #e1e1e1;align-items:center}
+.mockup-dot{width:7px;height:7px;border-radius:50%}
+.mockup-dot.red{background:#ff5f57}
+.mockup-dot.yellow{background:#febc2e}
+.mockup-dot.green{background:#28c840}
+.mockup-body{background:#fff;min-height:220px;position:relative;overflow:hidden;font-size:10px}
+/* Mini website preview */
+.mw-nav{display:flex;align-items:center;justify-content:space-between;padding:.4rem .8rem;border-bottom:1px solid #eee;font-size:8px}
+.mw-nav-logo{display:flex;align-items:center;gap:4px;font-weight:700;color:#333}
+.mw-nav-logo svg{width:14px;height:14px}
+.mw-nav-links{display:flex;gap:8px}
+.mw-nav-links span{color:#888}
+.mw-hero{padding:1.5rem 1rem;text-align:center;position:relative;overflow:hidden}
+.mw-hero-title{font-size:14px;font-weight:800;margin-bottom:.2rem;letter-spacing:-.01em}
+.mw-hero-sub{font-size:9px;opacity:.7;margin-bottom:.6rem}
+.mw-hero-btn{display:inline-block;padding:.25rem .7rem;border-radius:10px;font-size:8px;font-weight:600;color:#fff}
+.mw-section{display:flex;gap:.5rem;padding:.6rem .8rem}
+.mw-feature{flex:1;text-align:center;padding:.4rem .3rem;border-radius:6px}
+.mw-feature-icon{font-size:12px;margin-bottom:.2rem}
+.mw-feature-title{font-size:8px;font-weight:700;margin-bottom:.1rem}
+.mw-feature-desc{font-size:7px;opacity:.6}
+.mw-footer{display:flex;justify-content:space-between;align-items:center;padding:.4rem .8rem;border-top:1px solid #eee;font-size:7px;color:#aaa}
+.mw-img-placeholder{background:linear-gradient(135deg,rgba(0,0,0,.05),rgba(0,0,0,.02));border-radius:4px;height:45px;margin:.4rem .8rem;display:flex;align-items:center;justify-content:center;font-size:16px}
+/* Coaching mockup */
+.coaching-mockup .mw-hero{background:linear-gradient(180deg,#f7f5f0,#e8e2d9)}
+.coaching-mockup .mw-hero-title{color:#2d3436;font-family:Georgia,serif;font-style:italic}
+.coaching-mockup .mw-hero-sub{color:#8a8478;font-family:Georgia,serif}
+.coaching-mockup .mw-hero-btn{background:#87a878}
+.coaching-mockup .mw-feature{background:#f7f5f0}
+.coaching-mockup .mw-feature-title{color:#5a4a3a}
+.coaching-card .demo-info h3{color:#87a878}
+/* Handwerk mockup */
+.handwerk-mockup .mw-hero{background:linear-gradient(180deg,#5d4037,#3e2723)}
+.handwerk-mockup .mw-hero-title{color:#fff;font-family:Georgia,serif;letter-spacing:.02em}
+.handwerk-mockup .mw-hero-sub{color:rgba(255,255,255,.7);font-family:Georgia,serif}
+.handwerk-mockup .mw-hero-btn{background:#d4a574;color:#2d1f16}
+.handwerk-mockup .mw-feature{background:rgba(212,175,140,.08);border:1px solid rgba(212,175,140,.15)}
+.handwerk-mockup .mw-feature-title{color:#5a3a2a}
+.handwerk-mockup .mw-img-placeholder{background:linear-gradient(135deg,#6d4c41,#4e342e);color:rgba(255,255,255,.5)}
+.handwerk-mockup .mw-nav-logo,.handwerk-mockup .mw-nav-links span{color:#5a3a2a}
+.handwerk-card .demo-info h3{color:#d4a574}
+/* Restaurant mockup */
+.restaurant-mockup .mw-hero{background:linear-gradient(180deg,#0a0a0f,#1a1a2e)}
+.restaurant-mockup .mw-hero-title{color:#fff;font-family:Georgia,serif;font-style:italic}
+.restaurant-mockup .mw-hero-sub{color:rgba(255,255,255,.6);font-family:Georgia,serif}
+.restaurant-mockup .mw-hero-btn{background:#c9a96e;color:#0a0a0f}
+.restaurant-mockup .mw-feature{background:rgba(201,169,110,.06);border:1px solid rgba(201,169,110,.1)}
+.restaurant-mockup .mw-feature-title{color:#c9a96e}
+.restaurant-mockup .mw-img-placeholder{background:linear-gradient(135deg,#1a1a2e,#0a0a0f);color:rgba(201,169,110,.4)}
+.restaurant-mockup .mw-nav-logo,.restaurant-mockup .mw-nav-links span{color:#c9a96e}
+.restaurant-card .demo-info h3{color:#c9a96e}
+.demo-overlay{position:absolute;inset:0;background:rgba(3,3,8,.85);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .4s;backdrop-filter:blur(5px)}
+.demo-card:hover .demo-overlay{opacity:1}
+.demo-cta{background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;padding:.8rem 1.5rem;border-radius:50px;font-weight:600;font-size:.85rem}
+.demo-info{padding:1.8rem}
+.demo-info h3{font-size:1.1rem;font-weight:700;margin-bottom:.6rem}
+.demo-info p{color:var(--text-dim);font-size:.85rem;line-height:1.6;margin-bottom:1rem}
+.demo-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.demo-tag{background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.15);color:var(--primary-light);padding:.3rem .7rem;border-radius:20px;font-size:.7rem}
+
+/* Features / Why */
+.section{padding:6rem 0}
+.section-header{text-align:center;margin-bottom:4rem}
+.section-label{display:inline-block;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700;font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;margin-bottom:.8rem}
+.section-header h2{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:800;margin-bottom:1rem}
+.section-header p{color:var(--text-dim);font-size:1.1rem;max-width:600px;margin:0 auto}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.feature-card{background:var(--bg-glass);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:2rem;transition:all .4s;backdrop-filter:blur(20px);position:relative;overflow:hidden}
+.feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--primary),var(--accent),transparent);opacity:0;transition:opacity .4s}
+.feature-card:hover{border-color:rgba(99,102,241,.25);transform:translateY(-6px);box-shadow:0 25px 80px rgba(99,102,241,.15)}
+.feature-card:hover::before{opacity:1}
+.feature-icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(99,102,241,.2),rgba(6,182,212,.2));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.2rem;border:1px solid rgba(99,102,241,.15)}
+.feature-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+.feature-card p{color:var(--text-dim);font-size:.9rem;line-height:1.6}
+
+/* Process */
+.process-steps{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
+.process-step{text-align:center;max-width:220px;position:relative}
+.step-number{width:60px;height:60px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.3rem;margin:0 auto 1rem;box-shadow:0 8px 30px rgba(99,102,241,.3);position:relative;z-index:2;border:3px solid var(--bg)}
+.process-step h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
+.process-step p{color:var(--text-dim);font-size:.85rem;line-height:1.6}
+
+/* Pricing */
+.pricing{background:var(--bg-glass);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);backdrop-filter:blur(20px)}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;align-items:start}
+.price-card{background:var(--bg-glass);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:2.2rem;position:relative;transition:all .4s;backdrop-filter:blur(20px)}
+.price-card:hover{border-color:rgba(255,255,255,.15);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.price-card.popular{border-color:var(--primary);background:linear-gradient(180deg,var(--bg-glass),rgba(99,102,241,.08))}
+.popular-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;padding:.4rem 1.2rem;border-radius:50px;font-size:.78rem;font-weight:700;box-shadow:0 4px 15px rgba(99,102,241,.4)}
+.price-card h3{font-size:1.15rem;font-weight:700;margin-bottom:.3rem}
+.price-desc{color:var(--text-dim);font-size:.85rem;margin-bottom:1.5rem}
+.price-amount{font-size:2.8rem;font-weight:800;margin-bottom:.3rem;background:linear-gradient(135deg,var(--text),var(--text-dim));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.price-amount .currency{font-size:1.2rem;font-weight:600;vertical-align:super;-webkit-text-fill-color:var(--text-dim)}
+.price-amount .period{font-size:.9rem;color:var(--text-dim);font-weight:500;-webkit-text-fill-color:var(--text-dim)}
+.price-features{list-style:none;margin:1.5rem 0}
+.price-features li{display:flex;align-items:center;gap:.7rem;padding:.5rem 0;color:var(--text-dim);font-size:.9rem}
+.price-features li::before{content:"✓";color:var(--success);font-weight:700;font-size:1.1rem}
+.price-btn{width:100%;padding:1.1rem;border-radius:50px;font-weight:700;cursor:pointer;border:none;transition:all .3s;font-size:.95rem}
+.price-btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff}
+.price-btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 35px rgba(99,102,241,.4)}
+.price-btn-secondary{background:rgba(255,255,255,.05);color:var(--text);border:1px solid rgba(255,255,255,.12)}
+.price-btn-secondary:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}
+
+/* Testimonials */
+.testimonials{background:var(--bg-glass);border-top:1px solid rgba(255,255,255,.06);backdrop-filter:blur(20px)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.testi-card{background:var(--bg-glass);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.8rem;backdrop-filter:blur(20px);transition:all .3s}
+.testi-card:hover{border-color:rgba(99,102,241,.2);transform:translateY(-4px)}
+.testi-stars{color:var(--warning);margin-bottom:1rem;font-size:1.1rem;letter-spacing:2px}
+.testi-text{font-size:.92rem;line-height:1.7;margin-bottom:1.2rem;color:var(--text-dim)}
+.testi-author{display:flex;align-items:center;gap:.8rem}
+.testi-avatar{width:44px;height:44px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;border:2px solid rgba(255,255,255,.1)}
+.testi-name{font-weight:700;font-size:.9rem}
+.testi-role{font-size:.8rem;color:var(--text-dim)}
+
+/* FAQ */
+.faq-item{background:var(--bg-glass);border:1px solid rgba(255,255,255,.08);border-radius:16px;margin-bottom:1rem;overflow:hidden;backdrop-filter:blur(20px);transition:all .3s}
+.faq-item:hover{border-color:rgba(255,255,255,.12)}
+.faq-question{padding:1.3rem 1.5rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:600;font-size:.97rem;transition:background .2s}
+.faq-question:hover{background:rgba(255,255,255,.03)}
+.faq-icon{transition:transform .3s,color .3s;color:var(--text-dim)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease-out,padding .3s}
+.faq-answer-inner{padding:0 1.5rem 1.3rem;color:var(--text-dim);font-size:.92rem;line-height:1.7}
+.faq-item.active .faq-icon{transform:rotate(180deg);color:var(--accent)}
+.faq-item.active .faq-answer{max-height:350px}
+
+/* Final CTA */
+.final-cta{text-align:center;padding:7rem 0;background:linear-gradient(180deg,transparent,rgba(99,102,241,.06));position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(99,102,241,0.1),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.final-cta h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;margin-bottom:1rem;position:relative;z-index:1}
+.final-cta p{color:var(--text-dim);max-width:550px;margin:0 auto 2rem;font-size:1.1rem;position:relative;z-index:1}
+.contact-options{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:2rem;position:relative;z-index:1}
+.contact-option{background:var(--bg-glass);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:1.8rem;text-align:center;min-width:220px;transition:all .4s;backdrop-filter:blur(20px)}
+.contact-option:hover{border-color:rgba(99,102,241,.3);transform:translateY(-6px);box-shadow:0 20px 50px rgba(99,102,241,.15)}
+.contact-option .icon{font-size:2.2rem;margin-bottom:.8rem}
+.contact-option h4{font-size:1rem;margin-bottom:.3rem}
+.contact-option p{font-size:.82rem;color:var(--text-dim)}
+
+/* Footer */
+.footer{border-top:1px solid rgba(255,255,255,.06);padding:3.5rem 0 2rem;background:var(--bg-glass);backdrop-filter:blur(20px)}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2.5rem;margin-bottom:2.5rem}
+.footer-col h4{font-size:.9rem;font-weight:700;margin-bottom:1.2rem;color:var(--text)}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.6rem}
+.footer-col a{color:var(--text-dim);text-decoration:none;font-size:.85rem;transition:all .2s}
+.footer-col a:hover{color:var(--primary-light);padding-left:4px}
+.footer-bottom{text-align:center;padding-top:2rem;border-top:1px solid rgba(255,255,255,.06);color:var(--text-dim);font-size:.8rem}
+.footer-logo{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:1rem}
+.footer-logo svg{width:28px;height:28px}
+.footer-logo span{font-weight:800;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:1.1rem}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--primary),var(--accent));border-radius:4px}
+
+/* Selection */
+::selection{background:rgba(99,102,241,.3);color:#fff}
+
+/* Responsive */
+@media(max-width:768px){
+  .nav{display:none}
+  .mobile-toggle{display:block}
+  .hero-ctas{flex-direction:column;align-items:center}
+  .btn-primary,.btn-secondary{width:100%;max-width:320px;justify-content:center}
+  .trust-items{gap:1.2rem}
+  .contact-options{flex-direction:column;align-items:center}
+  .section{padding:4rem 0}
+  .hero-logo svg{width:90px;height:90px}
+  .demos-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- SVG Logo Definition -->
+<svg style="display:none">
+  <defs>
+    <linearGradient id="logo-grad-hero" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#149CF2"/>
+      <stop offset="50%" stop-color="#18D8F2"/>
+      <stop offset="100%" stop-color="#543BFF"/>
+    </linearGradient>
+  </defs>
+  <symbol id="dsh-logo" viewBox="0 0 1280 1280">
+  <defs>
+    <linearGradient id="ftl" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#19CFF0"/><stop offset="100%" stop-color="#168FEF"/></linearGradient>
+    <linearGradient id="ftr" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#19CFF0"/><stop offset="100%" stop-color="#245CFF"/></linearGradient>
+    <linearGradient id="fr" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#168FEF"/><stop offset="100%" stop-color="#20B8F4"/></linearGradient>
+    <linearGradient id="fbr" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#245CFF"/><stop offset="100%" stop-color="#4B38FF"/></linearGradient>
+    <linearGradient id="fbl" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#4B38FF"/><stop offset="100%" stop-color="#1AAEEF"/></linearGradient>
+    <linearGradient id="fl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#168FEF"/><stop offset="100%" stop-color="#245CFF"/></linearGradient>
+    <linearGradient id="ct" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#13DDE6"/><stop offset="100%" stop-color="#16BFEF"/></linearGradient>
+    <linearGradient id="cl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#285BFF"/><stop offset="100%" stop-color="#4B35FF"/></linearGradient>
+    <linearGradient id="cr" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#168EEF"/><stop offset="100%" stop-color="#1D6BFF"/></linearGradient>
+  </defs>
+  <rect width="1280" height="1280" fill="#000000"/>
+  <polygon points="640,60 1107,342 997,396 640,171" fill="url(#ftl)"/>
+  <polygon points="640,60 640,171 283,396 173,342" fill="url(#ftr)"/>
+  <polygon points="1107,342 1107,916 997,858 997,396" fill="url(#fr)"/>
+  <polygon points="1107,916 640,1200 640,1091 997,858" fill="url(#fbr)"/>
+  <polygon points="640,1200 173,916 283,858 640,1091" fill="url(#fbl)"/>
+  <polygon points="173,916 173,342 283,396 283,858" fill="url(#fl)"/>
+  <polygon points="640,343 857,481 640,620 407,481" fill="url(#ct)"/>
+  <polygon points="407,518 640,648 640,903 401,773" fill="url(#cl)"/>
+  <polygon points="857,518 648,648 648,903 859,773" fill="url(#cr)"/>
+  <polygon points="640,620 648,648 640,648 632,620" fill="#000000"/>
+  <line x1="640" y1="343" x2="640" y2="620" stroke="#000000" stroke-width="8"/>
+  <line x1="407" y1="481" x2="407" y2="518" stroke="#000000" stroke-width="6"/>
+  <line x1="857" y1="481" x2="857" y2="518" stroke="#000000" stroke-width="6"/>
+  <line x1="640" y1="620" x2="640" y2="903" stroke="#000000" stroke-width="10"/>
+  <text x="660" y="475" text-anchor="middle" font-family="Arial Black, Montserrat ExtraBold, Helvetica Neue Black, sans-serif" font-weight="900" font-size="165" fill="#000000" transform="skewX(-8) scale(1,0.65)">D</text>
+  <text x="520" y="705" text-anchor="middle" font-family="Arial Black, Montserrat ExtraBold, Helvetica Neue Black, sans-serif" font-weight="900" font-size="195" fill="#000000" transform="rotate(-12, 520, 705) skewY(15) scale(0.9,1)">S</text>
+  <text x="750" y="730" text-anchor="middle" font-family="Arial Black, Montserrat ExtraBold, Helvetica Neue Black, sans-serif" font-weight="900" font-size="195" fill="#000000" transform="rotate(12, 750, 730) skewY(-15) scale(0.9,1)">H</text>
+</symbol>
+</svg>
+<!-- Header -->
+<header class="header">
+  <div class="container header-inner">
+    <div class="logo">
+      <svg width="36" height="36" viewBox="0 0 1280 1280"><use href="#dsh-logo"/></svg>
+      Digital Service Hub
+    </div>
+    <nav class="nav">
+      <a href="#demos">Demos</a>
+      <a href="#leistungen">Leistungen</a>
+      <a href="#preise">Preise</a>
+      <a href="#prozess">Prozess</a>
+      <a href="#faq">FAQ</a>
+      <a href="#kontakt" class="cta-btn">Kostenlos beraten</a>
+    </nav>
+    <button class="mobile-toggle">☰</button>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-logo">
+      <svg class="logo-anim" width="140" height="140" viewBox="0 0 1280 1280" style="filter:drop-shadow(0 0 25px rgba(99,102,241,0.5))"><use href="#dsh-logo"/></svg>
+    </div>
+    <div class="hero-badge">
+      <span>🚀</span> In 7–10 Tagen online
+    </div>
+    <h1>Websites die <span class="gradient">verkaufen</span>.<br>Automatisiert.</h1>
+    <p class="hero-subtitle">Hochkonvertierende Websites für Coaches, Handwerker und KMU. Festpreis. Keine versteckten Kosten. Inklusive Design, SEO, Domain & Hosting.</p>
+    <div class="hero-ctas">
+      <a href="#kontakt" class="btn-primary">Jetzt kostenlos beraten lassen →</a>
+      <a href="#demos" class="btn-secondary">Demos ansehen</a>
+    </div>
+  </div>
+</section>
+
+<!-- Trust Bar -->
+<div class="trust-bar">
+  <div class="container trust-items">
+    <div class="trust-item"><span class="icon">⚡</span> 7–10 Tage Lieferzeit</div>
+    <div class="trust-item"><span class="icon">🔒</span> Festpreis-Garantie</div>
+    <div class="trust-item"><span class="icon">🎨</span> Premium Design</div>
+    <div class="trust-item"><span class="icon">📈</span> SEO-Optimiert</div>
+    <div class="trust-item"><span class="icon">🛡️</span> 30 Tage Support</div>
+  </div>
+</div>
+
+<!-- Demos Showcase -->
+<section class="section demos" id="demos">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Live Demos</div>
+      <h2>So sieht deine Website aus</h2>
+      <p class="section-subtitle">Drei Beispiele aus unserem Portfolio — klicke und erlebe die Live-Version</p>
+    </div>
+    <div class="demos-grid">
+      <a href="https://luxury-lolly-9df1f0.netlify.app" target="_blank" class="demo-card coaching-card">
+        <div class="demo-preview">
+          <div class="demo-mockup coaching-mockup">
+            <div class="mockup-header"><span class="mockup-dot red"></span><span class="mockup-dot yellow"></span><span class="mockup-dot green"></span></div>
+            <div class="mockup-body">
+              <div class="mw-nav">
+                <div class="mw-nav-logo">🌿 Clarity</div>
+                <div class="mw-nav-links"><span>Über</span><span>Angebot</span><span>Termin</span></div>
+              </div>
+              <div class="mw-hero">
+                <div class="mw-hero-title">Clarity Coaching</div>
+                <div class="mw-hero-sub">Dein Weg zu mehr Fülle & Klarheit</div>
+                <div class="mw-hero-btn">Jetzt Termin buchen</div>
+              </div>
+              <div class="mw-img-placeholder">🌿</div>
+              <div class="mw-section">
+                <div class="mw-feature"><div class="mw-feature-icon">🎯</div><div class="mw-feature-title">1:1 Coaching</div><div class="mw-feature-desc">Persönlich & individuell</div></div>
+                <div class="mw-feature"><div class="mw-feature-icon">📅</div><div class="mw-feature-title">Online Termine</div><div class="mw-feature-desc">Flexibel von überall</div></div>
+                <div class="mw-feature"><div class="mw-feature-icon">💎</div><div class="mw-feature-title">Premium</div><div class="mw-feature-desc">Exklusive Begleitung</div></div>
+              </div>
+              <div class="mw-footer"><span>© 2026 Clarity Coaching</span><span>Impressum</span></div>
+            </div>
+          </div>
+          <div class="demo-overlay"><span class="demo-cta">🚀 Live Demo öffnen</span></div>
+        </div>
+        <div class="demo-info">
+          <h3>Coaching & Beratung</h3>
+          <p>Warmes Design mit natürlichen Tönen — perfekt für Coaches, Therapeuten und Berater.</p>
+          <div class="demo-tags"><span class="demo-tag">Sage/Cream</span><span class="demo-tag">Playfair Display</span><span class="demo-tag">Terminbuchung</span></div>
+        </div>
+      </a>
+      <a href="https://marvelous-fenglisu-533e8a.netlify.app" target="_blank" class="demo-card handwerk-card">
+        <div class="demo-preview">
+          <div class="demo-mockup handwerk-mockup">
+            <div class="mockup-header"><span class="mockup-dot red"></span><span class="mockup-dot yellow"></span><span class="mockup-dot green"></span></div>
+            <div class="mockup-body">
+              <div class="mw-nav">
+                <div class="mw-nav-logo">🪵 Holz & Form</div>
+                <div class="mw-nav-links"><span>Leistungen</span><span>Projekte</span><span>Kontakt</span></div>
+              </div>
+              <div class="mw-hero">
+                <div class="mw-hero-title">Holz & Form</div>
+                <div class="mw-hero-sub">Maßarbeit aus Leidenschaft — Seit 1998</div>
+                <div class="mw-hero-btn">Projekt anfragen</div>
+              </div>
+              <div class="mw-img-placeholder">🪵</div>
+              <div class="mw-section">
+                <div class="mw-feature"><div class="mw-feature-icon">🪑</div><div class="mw-feature-title">Möbelbau</div><div class="mw-feature-desc">Maßgefertigt & handverlesen</div></div>
+                <div class="mw-feature"><div class="mw-feature-icon">🏠</div><div class="mw-feature-title">Innenausbau</div><div class="mw-feature-desc">Wohnräume mit Charakter</div></div>
+                <div class="mw-feature"><div class="mw-feature-icon">🔨</div><div class="mw-feature-title">Restauration</div><div class="mw-feature-desc">Altes neu beleben</div></div>
+              </div>
+              <div class="mw-footer"><span>© 2026 Holz & Form</span><span>Meisterbetrieb</span></div>
+            </div>
+          </div>
+          <div class="demo-overlay"><span class="demo-cta">🚀 Live Demo öffnen</span></div>
+        </div>
+        <div class="demo-info">
+          <h3>Handwerk & Gewerbe</h3>
+          <p>Rustikales Design mit warmen Holztönen — ideal für Tischler, Handwerker und Manufakturen.</p>
+          <div class="demo-tags"><span class="demo-tag">Walnuss/Amber</span><span class="demo-tag">Cormorant Garamond</span><span class="demo-tag">Galerie</span></div>
+        </div>
+      </a>
+      <a href="https://zesty-elf-0f1374.netlify.app" target="_blank" class="demo-card restaurant-card">
+        <div class="demo-preview">
+          <div class="demo-mockup restaurant-mockup">
+            <div class="mockup-header"><span class="mockup-dot red"></span><span class="mockup-dot yellow"></span><span class="mockup-dot green"></span></div>
+            <div class="mockup-body">
+              <div class="mw-nav">
+                <div class="mw-nav-logo">✦ Aura</div>
+                <div class="mw-nav-links"><span>Menü</span><span>Reservieren</span><span>Kontakt</span></div>
+              </div>
+              <div class="mw-hero">
+                <div class="mw-hero-title">Aura</div>
+                <div class="mw-hero-sub">Sterneküche trifft Innovation</div>
+                <div class="mw-hero-btn">Tisch reservieren</div>
+              </div>
+              <div class="mw-img-placeholder">✦</div>
+              <div class="mw-section">
+                <div class="mw-feature"><div class="mw-feature-icon">🍽️</div><div class="mw-feature-title">5-Gang Menü</div><div class="mw-feature-desc">Kulinarische Erlebnisse</div></div>
+                <div class="mw-feature"><div class="mw-feature-icon">🍷</div><div class="mw-feature-title">Weinbar</div><div class="mw-feature-desc">300+ edle Tropfen</div></div>
+                <div class="mw-feature"><div class="mw-feature-icon">⭐</div><div class="mw-feature-title">1 Stern</div><div class="mw-feature-desc">Guide Michelin 2026</div></div>
+              </div>
+              <div class="mw-footer"><span>© 2026 Restaurant Aura</span><span>Michelin ⭐</span></div>
+            </div>
+          </div>
+          <div class="demo-overlay"><span class="demo-cta">🚀 Live Demo öffnen</span></div>
+        </div>
+        <div class="demo-info">
+          <h3>Restaurant & Gastronomie</h3>
+          <p>Elegantes Design mit Gold-Akzenten — perfekt für Restaurants, Hotels und Premium-Dienstleister.</p>
+          <div class="demo-tags"><span class="demo-tag">Gold/Dunkel</span><span class="demo-tag">Cormorant Garamond</span><span class="demo-tag">Reservierung</span></div>
+        </div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:4rem">
+      <a href="https://tranquil-basbousa-b84985.netlify.app" target="_blank" class="btn-primary" style="font-size:1.05rem;padding:1.1rem 2.5rem">🎨 Eigenen Website-Configurator ausprobieren</a>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="section" id="leistungen">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Leistungen</div>
+      <h2>Alles was du brauchst —<br>in einem Paket</h2>
+      <p>Keine Baustelle, keine technischen Probleme. Wir kümmern uns um alles.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🎨</div>
+        <h3>Premium Design</h3>
+        <p>Individuelles Design nach deinen Wünschen. Keine Templates, keine 0815-Lösungen.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>100% Responsive</h3>
+        <p>Perfekte Darstellung auf Desktop, Tablet und Smartphone. Google-optimiert.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3>SEO & Speed</h3>
+        <p>Technische SEO, schnelle Ladezeiten, strukturierte Daten — für bessere Rankings.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>Automatisierung</h3>
+        <p>Chatbots, Kontaktformulare, Kalender-Integration — läuft von allein.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📝</div>
+        <h3>Copywriting</h3>
+        <p>Überzeugende Texte die verkaufen. Von erfahrenen Werbetextern geschrieben.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛠️</div>
+        <h3>Wartung & Support</h3>
+        <p>30 Tage kostenloser Support nach Launch. Optional: Monatliche Wartung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="section" id="prozess">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">So funktioniert's</div>
+      <h2>Von der Idee zur Website<br>in 4 Schritten</h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-number">1</div>
+        <h3>Kostenlose Beratung</h3>
+        <p>Wir besprechen deine Ziele, Zielgruppe und Wünsche in einem kurzen Call.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">2</div>
+        <h3>Design & Konzept</h3>
+        <p>Du erhältst ein maßgeschneidertes Design-Konzept zur Freigabe.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">3</div>
+        <h3>Entwicklung</h3>
+        <p>Wir bauen deine Website mit modernster Technologie — schnell und sicher.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">4</div>
+        <h3>Launch & Support</h3>
+        <p>Deine Website geht online. Wir begleiten dich durch die ersten 30 Tage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="section pricing" id="preise">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Preise</div>
+      <h2>Transparente Preise.<br>Keine versteckten Kosten.</h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Starter</h3>
+        <p class="price-desc">Für Einsteiger und Solo-Unternehmer</p>
+        <div class="price-amount"><span class="currency">€</span>1.499</div>
+        <ul class="price-features">
+          <li>One-Page Website</li>
+          <li>Premium Design</li>
+          <li>Mobile-optimiert</li>
+          <li>Kontaktformular</li>
+          <li>SEO-Grundsetup</li>
+          <li>Domain & Hosting (1 Jahr)</li>
+        </ul>
+        <button class="price-btn price-btn-secondary">Jetzt anfragen</button>
+      </div>
+      <div class="price-card popular">
+        <div class="popular-badge">Beliebt</div>
+        <h3>Business</h3>
+        <p class="price-desc">Für wachsende Unternehmen</p>
+        <div class="price-amount"><span class="currency">€</span>3.300</div>
+        <ul class="price-features">
+          <li>Bis zu 5 Seiten</li>
+          <li>Premium Design + Animationen</li>
+          <li>Blog-System</li>
+          <li>Chatbot-Integration</li>
+          <li>Erweitertes SEO</li>
+          <li>Google Analytics Setup</li>
+          <li>Domain & Hosting (1 Jahr)</li>
+        </ul>
+        <button class="price-btn price-btn-primary">Jetzt anfragen</button>
+      </div>
+      <div class="price-card">
+        <h3>Premium</h3>
+        <p class="price-desc">Für maximale Performance</p>
+        <div class="price-amount"><span class="currency">€</span>7.900</div>
+        <ul class="price-features">
+          <li>Unbegrenzte Seiten</li>
+          <li>Custom Features</li>
+          <li>Marketing-Automatisierung</li>
+          <li>CRM-Integration</li>
+          <li>Conversion-Tracking</li>
+          <li>Priority Support</li>
+          <li>Domain & Hosting (2 Jahre)</li>
+        </ul>
+        <button class="price-btn price-btn-secondary">Jetzt anfragen</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section testimonials">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Kundenstimmen</div>
+      <h2>Das sagen unsere Kunden</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Innerhalb von 8 Tagen hatten wir eine Website die besser aussieht als die unserer Konkurrenz. Die Anfragen gingen direkt um 40% hoch."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">MK</div>
+          <div>
+            <div class="testi-name">Markus K.</div>
+            <div class="testi-role">Coach & Trainer</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Endlich jemand der versteht was Handwerker brauchen. Kein Tech-Gerede, nur Ergebnisse. Meine Website verkauft jetzt für mich."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">TS</div>
+          <div>
+            <div class="testi-name">Thomas S.</div>
+            <div class="testi-role">Tischlermeister</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Der Chatbot auf unserer Website bucht jetzt automatisch Termine. Ich spare 5 Stunden pro Woche. Beste Investition des Jahres."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">SL</div>
+          <div>
+            <div class="testi-name">Sarah L.</div>
+            <div class="testi-role">Restaurantbesitzerin</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">FAQ</div>
+      <h2>Häufig gestellte Fragen</h2>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Wie lange dauert die Erstellung?</span>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">In der Regel 7–10 Tage ab Freigabe des Designs. Komplexe Projekte mit Custom Features können bis zu 14 Tage dauern.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Gibt es versteckte Kosten?</span>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">Nein. Der angezeigte Preis ist der Endpreis. Domain und Hosting für 1 Jahr sind inklusive. Danach optional verlängerbar.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Kann ich die Website später selbst bearbeiten?</span>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">Ja! Wir setzen auf nutzerfreundliche Systeme. Du bekommst eine kurze Einweisung und kannst Texte/Bilder selbst ändern.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Was passiert nach dem Launch?</span>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">30 Tage kostenloser Support inklusive. Danach bieten wir optionale Wartungs-Pakete für Updates und Support.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final-cta" id="kontakt">
+  <div class="container">
+    <h2>Bereit für deine neue Website?</h2>
+    <p>Kostenlose Beratung. Keine Verpflichtung. Wir zeigen dir was möglich ist.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn-primary">Jetzt Termin vereinbaren →</a>
+    </div>
+    <div class="contact-options">
+      <div class="contact-option">
+        <div class="icon">📧</div>
+        <h4>E-Mail</h4>
+        <p>hello@digitalservicehub.de</p>
+      </div>
+      <div class="contact-option">
+        <div class="icon">📱</div>
+        <h4>WhatsApp</h4>
+        <p>Schnelle Antwort garantiert</p>
+      </div>
+      <div class="contact-option">
+        <div class="icon">📞</div>
+        <h4>Telefon</h4>
+        <p>Kostenloser Beratungscall</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-logo">
+          <svg width="28" height="28" viewBox="0 0 1280 1280"><use href="#dsh-logo"/></svg>
+          <div style="font-weight:800;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:1.1rem">Digital Service Hub</div>
+        </div>
+        <p style="color:var(--text-dim);font-size:.85rem;line-height:1.6">Websites die verkaufen. Automatisiert. Für Coaches, Handwerker und KMU.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Leistungen</h4>
+        <ul>
+          <li><a href="#">Webdesign</a></li>
+          <li><a href="#">SEO & Marketing</a></li>
+          <li><a href="#">Automatisierung</a></li>
+          <li><a href="#">Content Creation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Unternehmen</h4>
+        <ul>
+          <li><a href="#">Über uns</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Karriere</a></li>
+          <li><a href="#">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="#">Impressum</a></li>
+          <li><a href="#">Datenschutz</a></li>
+          <li><a href="#">AGB</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Digital Service Hub. Alle Rechte vorbehalten.
+    </div>
+  </div>
+</footer>
+
+<script>
+// FAQ Accordion
+const faqItems = document.querySelectorAll('.faq-item');
+faqItems.forEach(item => {
+  const question = item.querySelector('.faq-question');
+  question.addEventListener('click', () => {
+    const isActive = item.classList.contains('active');
+    faqItems.forEach(i => i.classList.remove('active'));
+    if (!isActive) item.classList.add('active');
+  });
+});
+
+// Mobile menu
+const mobileToggle = document.querySelector('.mobile-toggle');
+const nav = document.querySelector('.nav');
+mobileToggle.addEventListener('click', () => {
+  nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+  nav.style.position = 'absolute';
+  nav.style.top = '70px';
+  nav.style.left = '0';
+  nav.style.right = '0';
+  nav.style.flexDirection = 'column';
+  nav.style.background = 'var(--bg-glass)';
+  nav.style.padding = '1rem';
+  nav.style.backdropFilter = 'blur(30px)';
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Header scroll effect
+const header = document.querySelector('.header');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll > 100) {
+    header.style.background = 'rgba(3,3,8,0.95)';
+    header.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3)';
+  } else {
+    header.style.background = 'var(--bg-glass)';
+    header.style.boxShadow = 'none';
+  }
+  lastScroll = currentScroll;
+});
+</script>
+
+</body>
+</html>
