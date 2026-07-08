@@ -292,6 +292,41 @@ body::after {
   .hero-logo svg{width:90px;height:90px}
   .demos-grid{grid-template-columns:1fr}
 }
+  /* Animations */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; }
+  .animate-fadeIn { animation: fadeIn 1s ease-out forwards; }
+  .delay-1 { animation-delay: 0.1s; opacity: 0; }
+  .delay-2 { animation-delay: 0.2s; opacity: 0; }
+  .delay-3 { animation-delay: 0.3s; opacity: 0; }
+  
+  /* Testimonials */
+  .testimonials { background: var(--bg-card); padding: 6rem 0; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+  .testimonial-card { background: var(--bg-elevated); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 2.5rem; position: relative; }
+  .testimonial-card::before { content: '"'; font-size: 4rem; color: var(--primary); opacity: 0.3; position: absolute; top: 10px; left: 20px; font-family: Georgia, serif; }
+  .testimonial-text { color: var(--text); font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem; position: relative; z-index: 1; }
+  .testimonial-author { display: flex; align-items: center; gap: 1rem; }
+  .testimonial-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.2rem; }
+  .testimonial-info h4 { color: var(--text); font-size: 0.95rem; font-weight: 600; }
+  .testimonial-info p { color: var(--text-dim); font-size: 0.8rem; }
+  
+  /* FAQ */
+  .faq { background: var(--bg); padding: 6rem 0; }
+  .faq-list { max-width: 800px; margin: 0 auto; padding: 0 2rem; }
+  .faq-item { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; margin-bottom: 1rem; overflow: hidden; }
+  .faq-question { padding: 1.5rem 2rem; color: var(--text); font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+  .faq-answer { padding: 0 2rem 1.5rem; color: var(--text-dim); line-height: 1.7; }
+  
+  /* Enhanced hero */
+  .hero-title-enhanced { background: linear-gradient(135deg, #fff 0%, #a5b4fc 50%, #67e8f9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 </style>
 </head>
 <body>
@@ -307,42 +342,122 @@ body::after {
   </defs>
   <symbol id="dsh-logo" viewBox="0 0 1280 1280">
   <defs>
-    <linearGradient id="ftl" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#19CFF0"/><stop offset="100%" stop-color="#168FEF"/></linearGradient>
-    <linearGradient id="ftr" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#19CFF0"/><stop offset="100%" stop-color="#245CFF"/></linearGradient>
-    <linearGradient id="fr" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#168FEF"/><stop offset="100%" stop-color="#20B8F4"/></linearGradient>
-    <linearGradient id="fbr" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#245CFF"/><stop offset="100%" stop-color="#4B38FF"/></linearGradient>
-    <linearGradient id="fbl" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#4B38FF"/><stop offset="100%" stop-color="#1AAEEF"/></linearGradient>
-    <linearGradient id="fl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#168FEF"/><stop offset="100%" stop-color="#245CFF"/></linearGradient>
-    <linearGradient id="ct" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#13DDE6"/><stop offset="100%" stop-color="#16BFEF"/></linearGradient>
-    <linearGradient id="cl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#285BFF"/><stop offset="100%" stop-color="#4B35FF"/></linearGradient>
-    <linearGradient id="cr" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#168EEF"/><stop offset="100%" stop-color="#1D6BFF"/></linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="15" result="coloredBlur"/>
-      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
+    <linearGradient id="ringTopLeft" x1="210" y1="340" x2="640" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1EA4F5"/>
+      <stop offset="1" stop-color="#1689EF"/>
+    </linearGradient>
+    <linearGradient id="ringTopRight" x1="640" y1="60" x2="1105" y2="345" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#25B9FF"/>
+      <stop offset="1" stop-color="#1CA2F3"/>
+    </linearGradient>
+    <linearGradient id="ringRight" x1="1105" y1="345" x2="1105" y2="930" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#12E2E6"/>
+      <stop offset="1" stop-color="#18A7F2"/>
+    </linearGradient>
+    <linearGradient id="ringBottomRight" x1="1105" y1="930" x2="640" y2="1222" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1CC4E9"/>
+      <stop offset="1" stop-color="#1B8EF5"/>
+    </linearGradient>
+    <linearGradient id="ringBottomLeft" x1="170" y1="930" x2="640" y2="1222" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5943FF"/>
+      <stop offset="0.55" stop-color="#3F55FF"/>
+      <stop offset="1" stop-color="#1A8EF5"/>
+    </linearGradient>
+    <linearGradient id="ringLeft" x1="170" y1="930" x2="170" y2="345" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#17B6E8"/>
+      <stop offset="1" stop-color="#1B98F3"/>
+    </linearGradient>
+    <linearGradient id="cubeTop" x1="455" y1="485" x2="825" y2="485" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#16DDE4"/>
+      <stop offset="1" stop-color="#12E8E7"/>
+    </linearGradient>
+    <linearGradient id="cubeLeft" x1="405" y1="520" x2="620" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2D6DFF"/>
+      <stop offset="1" stop-color="#4855FF"/>
+    </linearGradient>
+    <linearGradient id="cubeRight" x1="650" y1="520" x2="875" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#279BFF"/>
+      <stop offset="1" stop-color="#1B7EF4"/>
+    </linearGradient>
   </defs>
+
   <!-- NO black background - transparent! -->
-  <!-- Outer hexagonal frame (6 thick facets) -->
-  <polygon points="640,60 1107,342 997,396 640,171" fill="url(#ftl)" filter="url(#glow)"/>
-  <polygon points="640,60 640,171 283,396 173,342" fill="url(#ftr)" filter="url(#glow)"/>
-  <polygon points="1107,342 1107,916 997,858 997,396" fill="url(#fr)" filter="url(#glow)"/>
-  <polygon points="1107,916 640,1200 640,1091 997,858" fill="url(#fbr)" filter="url(#glow)"/>
-  <polygon points="640,1200 173,916 283,858 640,1091" fill="url(#fbl)" filter="url(#glow)"/>
-  <polygon points="173,916 173,342 283,396 283,858" fill="url(#fl)" filter="url(#glow)"/>
-  <!-- Inner cube -->
-  <polygon points="640,343 857,481 640,620 407,481" fill="url(#ct)"/>
-  <polygon points="407,518 640,648 640,903 401,773" fill="url(#cl)"/>
-  <polygon points="857,518 648,648 648,903 859,773" fill="url(#cr)"/>
-  <!-- Black separators between cube faces -->
-  <polygon points="640,620 648,648 640,648 632,620" fill="#000000"/>
-  <line x1="640" y1="343" x2="640" y2="620" stroke="#000000" stroke-width="8"/>
-  <line x1="407" y1="481" x2="407" y2="518" stroke="#000000" stroke-width="6"/>
-  <line x1="857" y1="481" x2="857" y2="518" stroke="#000000" stroke-width="6"/>
-  <line x1="640" y1="620" x2="640" y2="903" stroke="#000000" stroke-width="10"/>
-  <!-- Letters D/S/H -->
-  <text x="660" y="475" text-anchor="middle" font-family="Arial Black, Helvetica Neue, sans-serif" font-weight="900" font-size="165" fill="#000000" transform="skewX(-8) scale(1,0.65)">D</text>
-  <text x="520" y="705" text-anchor="middle" font-family="Arial Black, Helvetica Neue, sans-serif" font-weight="900" font-size="195" fill="#000000" transform="rotate(-12, 520, 705) skewY(15) scale(0.9,1)">S</text>
-  <text x="750" y="730" text-anchor="middle" font-family="Arial Black, Helvetica Neue, sans-serif" font-weight="900" font-size="195" fill="#000000" transform="rotate(12, 750, 730) skewY(-15) scale(0.9,1)">H</text>
+
+  <!-- outer hexagonal frame, approx. 105 px thick -->
+  <polygon fill="url(#ringTopLeft)"
+    points="640,58 640,172 266,402 172,348"/>
+
+  <polygon fill="url(#ringTopRight)"
+    points="640,58 1108,348 1006,402 640,172"/>
+
+  <polygon fill="url(#ringRight)"
+    points="1108,348 1108,932 1006,876 1006,402"/>
+
+  <polygon fill="url(#ringBottomRight)"
+    points="1108,932 640,1222 640,1108 1006,876"/>
+
+  <polygon fill="url(#ringBottomLeft)"
+    points="640,1222 172,932 266,876 640,1108"/>
+
+  <polygon fill="url(#ringLeft)"
+    points="172,932 172,348 266,402 266,876"/>
+
+  <!-- central cube -->
+  <!-- black underside / separators -->
+  <polygon fill="#000000"
+    points="405,489 640,632 875,489 875,532 640,676 405,532"/>
+
+  <!-- left cube face -->
+  <polygon fill="url(#cubeLeft)"
+    points="405,525 622,657 622,921 405,788"/>
+
+  <!-- right cube face -->
+  <polygon fill="url(#cubeRight)"
+    points="658,657 875,525 875,788 658,921"/>
+
+  <!-- vertical black separator -->
+  <polygon fill="#000000"
+    points="622,657 658,657 658,921 622,921"/>
+
+  <!-- top cube face -->
+  <polygon fill="url(#cubeTop)"
+    points="640,350 875,489 640,628 405,489"/>
+
+  <!-- D on top face -->
+  <g transform="translate(640,496)">
+    <text x="0" y="0"
+      text-anchor="middle"
+      dominant-baseline="middle"
+      font-family="Arial Black, Montserrat ExtraBold, Helvetica Neue, sans-serif"
+      font-size="168"
+      font-weight="900"
+      fill="#000000"
+      transform="scale(1.08,0.72)">D</text>
+  </g>
+
+  <!-- S on left face -->
+  <g transform="translate(520,733) rotate(29)">
+    <text x="0" y="0"
+      text-anchor="middle"
+      dominant-baseline="middle"
+      font-family="Arial Black, Montserrat ExtraBold, Helvetica Neue, sans-serif"
+      font-size="190"
+      font-weight="900"
+      fill="#000000"
+      transform="scale(0.82,1.08)">S</text>
+  </g>
+
+  <!-- H on right face -->
+  <g transform="translate(760,735)">
+    <text x="0" y="0"
+      text-anchor="middle"
+      dominant-baseline="middle"
+      font-family="Arial Black, Montserrat ExtraBold, Helvetica Neue, sans-serif"
+      font-size="188"
+      font-weight="900"
+      fill="#000000"
+      transform="scale(0.82,1.08)">H</text>
+  </g>
 </symbol>
 </svg>
 <!-- Header -->
@@ -537,6 +652,77 @@ body::after {
         <div class="step-number">4</div>
         <h3>Launch & Support</h3>
         <p>Deine Website geht online. Wir begleiten dich durch die ersten 30 Tage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Kundenstimmen</div>
+      <h2>Das sagen unsere Kunden</h2>
+      <p class="section-subtitle">Ueberzeug dich selbst von der Qualitaet unserer Arbeit</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card animate-fadeInUp delay-1">
+        <div class="testimonial-text">Die Zusammenarbeit war erstklassig. Meine Website sieht nicht nur professionell aus, sondern bringt auch tatsaechlich neue Kunden. Ein absolutes Game-Changer fuer mein Coaching-Business!</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SM</div>
+          <div class="testimonial-info">
+            <h4>Sarah Mueller</h4>
+            <p>Life Coach, Berlin</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card animate-fadeInUp delay-2">
+        <div class="testimonial-text">Endlich eine Agentur, die liefert was sie verspricht. Meine Website war innerhalb einer Woche online und sieht einfach umwerfend aus. Die automatisierte Terminbuchung spart mir Stunden pro Woche.</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">MK</div>
+          <div class="testimonial-info">
+            <h4>Markus Klein</h4>
+            <p>Tischlermeister, Muenchen</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card animate-fadeInUp delay-3">
+        <div class="testimonial-text">Vom ersten Gespraech bis zum Launch hat alles reibungslos funktioniert. Das Design ist exakt auf unsere Marke abgestimmt und die Reservierungsfunktion laeuft perfekt. Unsere Gaeste lieben die neue Website!</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">LW</div>
+          <div class="testimonial-info">
+            <h4>Lisa Weber</h4>
+            <p>Restaurantleiterin, Hamburg</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">FAQ</div>
+      <h2>Haeufig gestellte Fragen</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">Wie lange dauert die Erstellung einer Website? <span>+</span></div>
+        <div class="faq-answer">Durchschnittlich 7-10 Tage ab dem ersten Gespraech. Fuer komplexere Projekte mit individuellen Funktionen koennen es auch 2-3 Wochen sein.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Was ist im Preis enthalten? <span>+</span></div>
+        <div class="faq-answer">Design, Entwicklung, SEO-Optimierung, Domain-Registrierung, Hosting-Einrichtung und 30 Tage Support nach dem Launch. Keine versteckten Kosten.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Kann ich spaeter selbst Aenderungen vornehmen? <span>+</span></div>
+        <div class="faq-answer">Ja! Wir setzen auf moderne, wartbare Technologien. Du erhaeltst eine ausfuehrliche Dokumentation und bei Bedarf auch ein Video-Tutorial zur Bedienung.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Wie sieht es mit SEO aus? <span>+</span></div>
+        <div class="faq-answer">Jede Website wird technisch SEO-optimiert ausgeliefert: schnelle Ladezeiten, mobile Optimierung, strukturierte Daten und sauberer Code.</div>
       </div>
     </div>
   </div>
