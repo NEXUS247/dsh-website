@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1280" width="1280" height="1280">
+  <rect width="1280" height="1280" fill="#000000"/>
+  <defs>
+    <linearGradient id="ftl" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#19CFF0"/><stop offset="100%" stop-color="#168FEF"/></linearGradient>
+    <linearGradient id="ftr" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#19CFF0"/><stop offset="100%" stop-color="#245CFF"/></linearGradient>
+    <linearGradient id="fr" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#168FEF"/><stop offset="100%" stop-color="#20B8F4"/></linearGradient>
+    <linearGradient id="fbr" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#245CFF"/><stop offset="100%" stop-color="#4B38FF"/></linearGradient>
+    <linearGradient id="fbl" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#4B38FF"/><stop offset="100%" stop-color="#1AAEEF"/></linearGradient>
+    <linearGradient id="fl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#168FEF"/><stop offset="100%" stop-color="#245CFF"/></linearGradient>
+    <linearGradient id="ct" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#13DDE6"/><stop offset="100%" stop-color="#16BFEF"/></linearGradient>
+    <linearGradient id="cl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#285BFF"/><stop offset="100%" stop-color="#4B35FF"/></linearGradient>
+    <linearGradient id="cr" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#168EEF"/><stop offset="100%" stop-color="#1D6BFF"/></linearGradient>
+  </defs>
+  <!-- Frame facets -->
+  <polygon points="640,60 1107,342 997,396 640,171" fill="url(#ftl)"/>
+  <polygon points="640,60 640,171 283,396 173,342" fill="url(#ftr)"/>
+  <polygon points="1107,342 1107,916 997,858 997,396" fill="url(#fr)"/>
+  <polygon points="1107,916 640,1200 640,1091 997,858" fill="url(#fbr)"/>
+  <polygon points="640,1200 173,916 283,858 640,1091" fill="url(#fbl)"/>
+  <polygon points="173,916 173,342 283,396 283,858" fill="url(#fl)"/>
+  <!-- Cube faces -->
+  <polygon points="640,343 857,481 640,620 407,481" fill="url(#ct)"/>
+  <polygon points="407,518 640,648 640,903 401,773" fill="url(#cl)"/>
+  <polygon points="857,518 648,648 648,903 859,773" fill="url(#cr)"/>
+  <!-- Black separators -->
+  <polygon points="640,620 648,648 640,648 632,620" fill="#000000"/>
+  <line x1="640" y1="343" x2="640" y2="620" stroke="#000000" stroke-width="8"/>
+  <line x1="407" y1="481" x2="407" y2="518" stroke="#000000" stroke-width="6"/>
+  <line x1="857" y1="481" x2="857" y2="518" stroke="#000000" stroke-width="6"/>
+  <line x1="640" y1="620" x2="640" y2="903" stroke="#000000" stroke-width="10"/>
+  <!-- Letters -->
+  <text x="660" y="475" text-anchor="middle" font-family="Arial Black, Montserrat ExtraBold, Helvetica Neue Black, sans-serif" font-weight="900" font-size="165" fill="#000000" transform="skewX(-8) scale(1,0.65)">D</text>
+  <text x="520" y="705" text-anchor="middle" font-family="Arial Black, Montserrat ExtraBold, Helvetica Neue Black, sans-serif" font-weight="900" font-size="195" fill="#000000" transform="rotate(-12, 520, 705) skewY(15) scale(0.9,1)">S</text>
+  <text x="750" y="730" text-anchor="middle" font-family="Arial Black, Montserrat ExtraBold, Helvetica Neue Black, sans-serif" font-weight="900" font-size="195" fill="#000000" transform="rotate(12, 750, 730) skewY(-15) scale(0.9,1)">H</text>
+</svg>
