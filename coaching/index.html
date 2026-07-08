@@ -189,123 +189,94 @@ body::after {
     </linearGradient>
   </defs>
   <symbol id="dsh-logo" viewBox="0 0 1280 1280">
+
   <defs>
-    <linearGradient id="ringTopLeft" x1="210" y1="340" x2="640" y2="60" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#1EA4F5"/>
-      <stop offset="1" stop-color="#1689EF"/>
+    <!-- Frame gradients - balanced, less neon -->
+    <linearGradient id="g1" x1="640" y1="60" x2="172" y2="348" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
     </linearGradient>
-    <linearGradient id="ringTopRight" x1="640" y1="60" x2="1105" y2="345" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#25B9FF"/>
-      <stop offset="1" stop-color="#1CA2F3"/>
+    <linearGradient id="g2" x1="640" y1="60" x2="1108" y2="348" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
     </linearGradient>
-    <linearGradient id="ringRight" x1="1105" y1="345" x2="1105" y2="930" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#12E2E6"/>
-      <stop offset="1" stop-color="#18A7F2"/>
+    <linearGradient id="g3" x1="1108" y1="348" x2="1108" y2="932" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
     </linearGradient>
-    <linearGradient id="ringBottomRight" x1="1105" y1="930" x2="640" y2="1222" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#1CC4E9"/>
-      <stop offset="1" stop-color="#1B8EF5"/>
+    <linearGradient id="g4" x1="1108" y1="932" x2="640" y2="1222" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#6366F1"/>
     </linearGradient>
-    <linearGradient id="ringBottomLeft" x1="170" y1="930" x2="640" y2="1222" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#5943FF"/>
-      <stop offset="0.55" stop-color="#3F55FF"/>
-      <stop offset="1" stop-color="#1A8EF5"/>
+    <linearGradient id="g5" x1="172" y1="932" x2="640" y2="1222" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#818CF8"/>
     </linearGradient>
-    <linearGradient id="ringLeft" x1="170" y1="930" x2="170" y2="345" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#17B6E8"/>
-      <stop offset="1" stop-color="#1B98F3"/>
+    <linearGradient id="g6" x1="172" y1="348" x2="172" y2="932" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
     </linearGradient>
-    <linearGradient id="cubeTop" x1="455" y1="485" x2="825" y2="485" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#16DDE4"/>
-      <stop offset="1" stop-color="#12E8E7"/>
+    
+    <!-- Cube faces - balanced colors -->
+    <linearGradient id="cTop" x1="405" y1="489" x2="875" y2="489" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#14B8A6"/>
     </linearGradient>
-    <linearGradient id="cubeLeft" x1="405" y1="520" x2="620" y2="900" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#2D6DFF"/>
-      <stop offset="1" stop-color="#4855FF"/>
+    <linearGradient id="cLeft" x1="405" y1="525" x2="640" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#6366F1"/>
     </linearGradient>
-    <linearGradient id="cubeRight" x1="650" y1="520" x2="875" y2="900" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#279BFF"/>
-      <stop offset="1" stop-color="#1B7EF4"/>
+    <linearGradient id="cRight" x1="640" y1="525" x2="875" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
     </linearGradient>
   </defs>
 
-  <!-- NO black background - transparent! -->
+  <!-- NO background - transparent! -->
 
-  <!-- outer hexagonal frame, approx. 105 px thick -->
-  <polygon fill="url(#ringTopLeft)"
-    points="640,58 640,172 266,402 172,348"/>
+  <!-- Outer hexagon frame - balanced thickness -->
+  <polygon points="640,60 640,172 266,402 172,348" fill="url(#g1)"/>
+  <polygon points="640,60 1108,348 1006,402 640,172" fill="url(#g2)"/>
+  <polygon points="1108,348 1108,932 1006,876 1006,402" fill="url(#g3)"/>
+  <polygon points="1108,932 640,1222 640,1108 1006,876" fill="url(#g4)"/>
+  <polygon points="640,1222 172,932 266,876 640,1108" fill="url(#g5)"/>
+  <polygon points="172,932 172,348 266,402 266,876" fill="url(#g6)"/>
 
-  <polygon fill="url(#ringTopRight)"
-    points="640,58 1108,348 1006,402 640,172"/>
+  <!-- 3D Cube - centered, balanced perspective -->
+  <!-- Thin black separators -->
+  <polygon points="405,489 640,632 875,489 875,500 640,643 405,500" fill="#000000" opacity="0.8"/>
 
-  <polygon fill="url(#ringRight)"
-    points="1108,348 1108,932 1006,876 1006,402"/>
+  <!-- Left face -->
+  <polygon points="405,525 640,657 640,921 405,788" fill="url(#cLeft)"/>
 
-  <polygon fill="url(#ringBottomRight)"
-    points="1108,932 640,1222 640,1108 1006,876"/>
+  <!-- Right face -->
+  <polygon points="640,657 875,525 875,788 640,921" fill="url(#cRight)"/>
 
-  <polygon fill="url(#ringBottomLeft)"
-    points="640,1222 172,932 266,876 640,1108"/>
+  <!-- Thin vertical separator -->
+  <polygon points="640,657 645,657 645,921 640,921" fill="#000000" opacity="0.8"/>
 
-  <polygon fill="url(#ringLeft)"
-    points="172,932 172,348 266,402 266,876"/>
+  <!-- Top face -->
+  <polygon points="640,350 875,489 640,628 405,489" fill="url(#cTop)"/>
 
-  <!-- central cube -->
-  <!-- black underside / separators -->
-  <polygon fill="#000000"
-    points="405,489 640,632 875,489 875,532 640,676 405,532"/>
-
-  <!-- left cube face -->
-  <polygon fill="url(#cubeLeft)"
-    points="405,525 622,657 622,921 405,788"/>
-
-  <!-- right cube face -->
-  <polygon fill="url(#cubeRight)"
-    points="658,657 875,525 875,788 658,921"/>
-
-  <!-- vertical black separator -->
-  <polygon fill="#000000"
-    points="622,657 658,657 658,921 622,921"/>
-
-  <!-- top cube face -->
-  <polygon fill="url(#cubeTop)"
-    points="640,350 875,489 640,628 405,489"/>
-
-  <!-- D on top face -->
-  <g transform="translate(640,496)">
-    <text x="0" y="0"
-      text-anchor="middle"
-      dominant-baseline="middle"
-      font-family="Arial Black, Montserrat ExtraBold, Helvetica Neue, sans-serif"
-      font-size="168"
-      font-weight="900"
-      fill="#000000"
-      transform="scale(1.08,0.72)">D</text>
+  <!-- Letters D/S/H - properly sized and positioned -->
+  <g transform="translate(640, 500)">
+    <text x="0" y="0" text-anchor="middle" dominant-baseline="middle"
+      font-family="Arial Black, sans-serif" font-weight="900" font-size="120" fill="#000000"
+      transform="scale(1, 0.6)">D</text>
   </g>
 
-  <!-- S on left face -->
-  <g transform="translate(520,733) rotate(29)">
-    <text x="0" y="0"
-      text-anchor="middle"
-      dominant-baseline="middle"
-      font-family="Arial Black, Montserrat ExtraBold, Helvetica Neue, sans-serif"
-      font-size="190"
-      font-weight="900"
-      fill="#000000"
-      transform="scale(0.82,1.08)">S</text>
+  <g transform="translate(520, 720) rotate(30)">
+    <text x="0" y="0" text-anchor="middle" dominant-baseline="middle"
+      font-family="Arial Black, sans-serif" font-weight="900" font-size="130" fill="#000000"
+      transform="scale(0.75, 1)">S</text>
   </g>
 
-  <!-- H on right face -->
-  <g transform="translate(760,735)">
-    <text x="0" y="0"
-      text-anchor="middle"
-      dominant-baseline="middle"
-      font-family="Arial Black, Montserrat ExtraBold, Helvetica Neue, sans-serif"
-      font-size="188"
-      font-weight="900"
-      fill="#000000"
-      transform="scale(0.82,1.08)">H</text>
+  <g transform="translate(760, 720)">
+    <text x="0" y="0" text-anchor="middle" dominant-baseline="middle"
+      font-family="Arial Black, sans-serif" font-weight="900" font-size="130" fill="#000000"
+      transform="scale(0.75, 1)">H</text>
   </g>
+
 </symbol>
 </svg>
 
